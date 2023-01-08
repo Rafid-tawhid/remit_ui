@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:remit_ui/widgets/send_money.dart';
 
 import 'button1.dart';
 

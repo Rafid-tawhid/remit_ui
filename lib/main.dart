@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:remit_ui/pages/enter_otp_page.dart';
 import 'package:remit_ui/pages/home_page.dart';
 import 'package:remit_ui/pages/launcher_page.dart';
+import 'package:remit_ui/pages/show_data.dart';
 import 'package:remit_ui/pages/signup_page.dart';
 import 'package:remit_ui/widgets/send.dart';
+import 'package:remit_ui/widgets/send_money.dart';
 
 import 'pages/login_page.dart';
 
@@ -31,6 +33,7 @@ class MyApp extends StatelessWidget {
         LoginPage.routeName:(context)=>LoginPage(),
         OtpPage.routeName:(context)=>OtpPage(),
         SendWidget.routeName:(context)=>SendWidget(),
+        ShowDataPage.routeName:(context)=>ShowDataPage(),
       },
     );
   }
