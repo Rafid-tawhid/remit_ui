@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
           ),
           CustomBottomBarItems(
             label: 'Receiver',
-            icon: Icons.person_2,
+            icon: Icons.person,
           ),
           CustomBottomBarItems(
               label: 'Send', icon: Icons.send),

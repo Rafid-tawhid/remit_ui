@@ -9,6 +9,7 @@ class SendMoneyWidget extends StatefulWidget {
 
   const SendMoneyWidget({Key? key}) : super(key: key);
 
+
   @override
   State<SendMoneyWidget> createState() => _SendMoneyWidgetState();
 }
@@ -25,7 +26,6 @@ class _SendMoneyWidgetState extends State<SendMoneyWidget> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Row(
-
           children: [
             Icon(Icons.arrow_back,color: Colors.black,),
             SizedBox(width: 10,),
