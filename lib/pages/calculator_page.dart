@@ -113,10 +113,17 @@ class _CalculatorPageState extends State<CalculatorPage> {
                       provider
                           .getFirstCallInfo(
                               provider.countryInfoList.first.name!)
-                          .then((value) {
+                          .then((value) async {
+                        var total;
+                          total= await  provider.getRateByCountryId("3000", value.first.currencyId,value.first.serviceId);
+
                         setState(() {
-                          // initialCurrency = value.first.currency!;
+                           initialCurrency = value.first.currency!;
+                          
                           initialCurrency = 'Select Services';
+                         fees=total['single_fee'].toString();
+                        totallCost=3000*double.parse(value.first.finalRate!)+double.parse(fees);
+                          rate=double.parse(value.first.finalRate!);
                           sendControler.text = '3000';
                           receiveControler.text =
                               '${double.parse(value.first.finalRate!) * 3000}';
@@ -370,7 +377,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                                           fontSize: 12,
                                           color: Colors.grey.shade600),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
                                     Container(
@@ -477,8 +484,8 @@ class _CalculatorPageState extends State<CalculatorPage> {
                                               color: Colors.grey,
                                             ),
                                           ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(4.0),
+                                          const Padding(
+                                            padding: EdgeInsets.all(4.0),
                                             child: Text(
                                               'AUD',
                                               style: TextStyle(fontSize: 20),
@@ -490,7 +497,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                                   ],
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 20,
                               ),
                               Expanded(
@@ -504,7 +511,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                                           fontSize: 12,
                                           color: Colors.grey.shade600),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
                                     Container(
@@ -515,26 +522,24 @@ class _CalculatorPageState extends State<CalculatorPage> {
                                       child: Row(
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
-                                          Container(
-                                            child: Flexible(
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 10.0),
-                                                child: TextField(
-                                                  keyboardType:
-                                                      TextInputType.number,
-                                                  decoration:
-                                                      const InputDecoration(
-                                                          border:
-                                                              InputBorder.none),
-                                                  controller: receiveControler,
-                                                  onChanged: (value) {
-                                                    rate = double.parse(value) /
-                                                        final_rate!;
-                                                    sendControler.text =
-                                                        rate.toStringAsFixed(2);
-                                                  },
-                                                ),
+                                          Flexible(
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 10.0),
+                                              child: TextField(
+                                                keyboardType:
+                                                    TextInputType.number,
+                                                decoration:
+                                                    const InputDecoration(
+                                                        border:
+                                                            InputBorder.none),
+                                                controller: receiveControler,
+                                                onChanged: (value) {
+                                                  rate = double.parse(value) /
+                                                      final_rate!;
+                                                  sendControler.text =
+                                                      rate.toStringAsFixed(2);
+                                                },
                                               ),
                                             ),
                                           ),
